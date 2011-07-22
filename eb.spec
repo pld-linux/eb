@@ -7,7 +7,7 @@ Summary:	Library for accessing CD-ROM books
 #Summary(pl.UTF-8):	-
 Name:		eb
 Version:	4.4.3
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	ftp://ftp.sra.co.jp/pub/misc/eb/%{name}-%{version}.tar.bz2
@@ -127,5 +127,5 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
-%doc %{_docdir}/%{name}-apidocs-%{version}/*
+%doc %{_docdir}/%{name}-apidocs-%{version}
 %endif
