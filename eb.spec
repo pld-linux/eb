@@ -4,7 +4,7 @@
 %bcond_without	static_libs	# don't build static libraries
 #
 Summary:	Library for accessing CD-ROM books
-#Summary(pl.UTF-8):	-
+Summary(pl.UTF-8):	Biblioteka dostępu do książek na płytach CD-ROM
 Name:		eb
 Version:	4.4.3
 Release:	2
@@ -18,12 +18,17 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 EB Library supports to access CD-ROM books of EB, EBG, EBXA, EBXA-C,
-S-EBXA and EPWING formats.  CD-ROM books of those formats are popular
-in Japan.  Since CD-ROM books themseves are stands on the ISO 9660
+S-EBXA and EPWING formats. CD-ROM books of those formats are popular
+in Japan. Since CD-ROM books themseves are stands on the ISO 9660
 format, you can mount the discs by the same way as other ISO 9660
 discs.
 
-#%description -l pl.UTF-8
+%description -l pl.UTF-8
+Biblioteka EB pozwala na dostęp do książek na płytach CD-ROM w
+formatach EB, EBG, EBXA, EBXA-C, S-EBXA oraz EPWING. Książki w tych
+formatach są popularne w Japonii. Ponieważ książki na płytach jako
+takie są plikami zapisanymi w formacie ISO 9660, można montować
+takie płyty w taki sam sposób, jak inne płyty ISO 9660.
 
 %package utils
 Summary:	Utilities provided by EB library
@@ -108,12 +113,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files utils -f ebutils.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/ebappendix
+%attr(755,root,root) %{_bindir}/ebfont
+%attr(755,root,root) %{_bindir}/ebinfo
+%attr(755,root,root) %{_bindir}/ebrefile
+%attr(755,root,root) %{_bindir}/ebstopcode
+%attr(755,root,root) %{_bindir}/ebunzip
+%attr(755,root,root) %{_bindir}/ebzip
+%attr(755,root,root) %{_bindir}/ebzipinfo
 
 %files devel
 %defattr(644,root,root,755)
 %{_sysconfdir}/eb.conf
-%{_libdir}/libeb.so
+%attr(755,root,root) %{_libdir}/libeb.so
 %{_libdir}/libeb.la
 %{_includedir}/eb
 %{_aclocaldir}/eb4.m4
