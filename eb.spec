@@ -2,12 +2,12 @@
 # Conditional build:
 %bcond_without	apidocs		# do not build and package API docs
 %bcond_without	static_libs	# don't build static libraries
-#
+
 Summary:	Library for accessing CD-ROM books
 Summary(pl.UTF-8):	Biblioteka dostępu do książek na płytach CD-ROM
 Name:		eb
 Version:	4.4.3
-Release:	2
+Release:	3
 License:	BSD
 Group:		Libraries
 Source0:	ftp://ftp.sra.co.jp/pub/misc/eb/%{name}-%{version}.tar.bz2
@@ -27,8 +27,8 @@ discs.
 Biblioteka EB pozwala na dostęp do książek na płytach CD-ROM w
 formatach EB, EBG, EBXA, EBXA-C, S-EBXA oraz EPWING. Książki w tych
 formatach są popularne w Japonii. Ponieważ książki na płytach jako
-takie są plikami zapisanymi w formacie ISO 9660, można montować
-takie płyty w taki sam sposób, jak inne płyty ISO 9660.
+takie są plikami zapisanymi w formacie ISO 9660, można montować takie
+płyty w taki sam sposób, jak inne płyty ISO 9660.
 
 %package utils
 Summary:	Utilities provided by EB library
@@ -70,6 +70,9 @@ Statyczna biblioteka EB.
 Summary:	EB API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki EB
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 API and internal documentation for EB library.
