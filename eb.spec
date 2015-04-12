@@ -7,7 +7,7 @@ Summary:	Library for accessing CD-ROM books
 Summary(pl.UTF-8):	Biblioteka dostępu do książek na płytach CD-ROM
 Name:		eb
 Version:	4.4.3
-Release:	3
+Release:	4
 License:	BSD
 Group:		Libraries
 Source0:	ftp://ftp.sra.co.jp/pub/misc/eb/%{name}-%{version}.tar.bz2
