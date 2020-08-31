@@ -1,0 +1,18 @@
+--- eb-4.4.3/configure.ac.orig	2010-03-08 13:18:28.000000000 +0100
++++ eb-4.4.3/configure.ac	2020-08-31 06:15:57.001336125 +0200
+@@ -237,12 +237,9 @@
+ dnl * 
+ dnl * Libraries.
+ dnl * 
+-AC_CHECK_LIB(resolv, res_query)
+-if test "$ac_cv_lib_resolv_res_query" = no; then
+-    AC_CHECK_LIB(bind, res_query)
+-fi
+-AC_CHECK_LIB(nsl, gethostname)
+-AC_CHECK_LIB(socket, socket)
++AC_SEARCH_LIBS(res_query, [resolv bind])
++AC_SEARCH_LIBS(gethostname, nsl)
++AC_SEARCH_LIBS(socket, socket)
+ 
+ dnl * 
+ dnl * Library Functions.

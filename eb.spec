@@ -7,12 +7,16 @@ Summary:	Library for accessing CD-ROM books
 Summary(pl.UTF-8):	Biblioteka dostępu do książek na płytach CD-ROM
 Name:		eb
 Version:	4.4.3
-Release:	4
+Release:	5
 License:	BSD
 Group:		Libraries
 Source0:	ftp://ftp.sra.co.jp/pub/misc/eb/%{name}-%{version}.tar.bz2
 # Source0-md5:	17dd1fade7ba0b82ce6e60f19fcbc823
-URL:		http://www.sra.co.jp/people/m-kasahr/eb/
+Patch0:		%{name}-link.patch
+URL:		https://github.com/yasuhirokimura/eb
+BuildRequires:	autoconf >= 2.54
+BuildRequires:	automake
+BuildRequires:	libtool
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -70,7 +74,7 @@ Statyczna biblioteka EB.
 Summary:	EB API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki EB
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
+%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
 %endif
 
@@ -82,8 +86,14 @@ Dokumentacja API biblioteki EB.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
 	--enable-samples \
 	--enable-pthread \
@@ -127,10 +137,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%{_sysconfdir}/eb.conf
 %attr(755,root,root) %{_libdir}/libeb.so
 %{_libdir}/libeb.la
 %{_includedir}/eb
+%{_sysconfdir}/eb.conf
 %{_aclocaldir}/eb4.m4
 
 %if %{with static_libs}
