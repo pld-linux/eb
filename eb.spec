@@ -74,9 +74,7 @@ Statyczna biblioteka EB.
 Summary:	EB API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki EB
 Group:		Documentation
-%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 API and internal documentation for EB library.
