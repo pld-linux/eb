@@ -7,12 +7,14 @@ Summary:	Library for accessing CD-ROM books
 Summary(pl.UTF-8):	Biblioteka dostępu do książek na płytach CD-ROM
 Name:		eb
 Version:	4.4.3
-Release:	5
+Release:	6
 License:	BSD
 Group:		Libraries
 Source0:	ftp://ftp.sra.co.jp/pub/misc/eb/%{name}-%{version}.tar.bz2
 # Source0-md5:	17dd1fade7ba0b82ce6e60f19fcbc823
 Patch0:		%{name}-link.patch
+Patch1:		%{name}-lock.patch
+Patch2:		%{name}-c99.patch
 URL:		https://github.com/yasuhirokimura/eb
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
@@ -85,6 +87,8 @@ Dokumentacja API biblioteki EB.
 %prep
 %setup -q
 %patch -P0 -p1
+%patch -P1 -p1
+%patch -P2 -p1
 
 %build
 %{__libtoolize}
@@ -93,6 +97,7 @@ Dokumentacja API biblioteki EB.
 %{__autoheader}
 %{__automake}
 %configure \
+	CPPFLAGS="%{rpmcppflags}" \
 	--enable-samples \
 	--enable-pthread \
 	--enable-ebnet \

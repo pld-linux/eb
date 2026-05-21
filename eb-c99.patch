@@ -1,0 +1,31 @@
+--- eb-4.4.3/libebutils/getopt.c.orig
++++ eb-4.4.3/libebutils/getopt.c
+@@ -87,8 +87,6 @@
+
+ #define	EMSG	""
+
+-extern char *getenv();
+-
+ static int getopt_internal(int nargc, char * const *nargv,
+     const char *options);
+ static int gcd(int a, int b);
+--- eb-4.4.3/libebutils/puts_eucjp.c.orig
++++ eb-4.4.3/libebutils/puts_eucjp.c
+@@ -59,7 +59,7 @@ fputs_eucjp_to_locale(const char *string
+     char *buffer = NULL;
+     size_t buffer_size;
+     iconv_t cd = (iconv_t)-1;
+-    const char *in_p;
++    char *in_p;
+     char *out_p;
+     size_t in_left;
+     size_t out_left;
+@@ -89,7 +89,7 @@ fputs_eucjp_to_locale(const char *string
+ 	if (buffer == NULL)
+ 	    goto failed;
+
+-	in_p = string;
++	in_p = (char *)string;
+ 	in_left = string_length + 1;
+ 	out_p = buffer;
+ 	out_left = buffer_size;
